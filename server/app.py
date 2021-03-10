@@ -38,7 +38,6 @@ def img_to_encoding(path, model):
 database = {}
 import os
 people = os.listdir('./images')
-print(people)
 for w in people:
     database[w[0:-4]] = img_to_encoding("images/" + w, model)
 
@@ -46,7 +45,6 @@ for w in people:
 def verify(image_path, identity, database, model):
     encoding = img_to_encoding(image_path, model)
     dist = np.linalg.norm(encoding-database[identity])
-    print(dist)
     if dist<5:
         print("It's " + str(identity) + ", welcome in!")
         match = True
@@ -81,7 +79,6 @@ def who_is_it(image_path, database, model):
     # Loop over the database dictionary's names and encodings.
     for (name, db_enc) in database.items():
         dist = np.linalg.norm(encoding-db_enc)
-        print(dist)
         if dist<min_dist:
             min_dist = dist
             identity = name
@@ -116,7 +113,8 @@ def change():
         writer.writeheader() 
         writer.writerows(data)
 
-
+    if (identity == "unknown"):
+        return json.dumps({"error": "unknown person. please register"})
     return json.dumps({"message": "person added into logs"})
 
 

@@ -1,9 +1,11 @@
 import React, {Component} from 'react';
-import './css/main.css';
-import './css/util.css';
-import './signup.css';
-import Sketch from "react-p5";
+import './css/main.css'
+import './css/util.css'
+import './signup.css'
+import Sketch from "react-p5"
 import { Link, Redirect } from 'react-router-dom';
+import error from './error.mp3'
+import msg from './msg.mp3'
 
 const axios = require('axios');
 let video;
@@ -39,9 +41,19 @@ export class Verify extends Component {
           if(response.data.message){
 	        this.setState({
 	        	verify:true
-	        })
-          };
-    }
+			})
+			this.beep(msg)
+		  }
+		  else if (response.data.error) {
+			  this.beep(error)
+		  }
+	}
+	
+	beep = (sound) => {
+		var audio = new Audio(sound); 
+		audio.play(); 
+	}
+
     
 
 	render(){
