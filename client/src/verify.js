@@ -25,17 +25,9 @@ export class Verify extends Component {
     }
 
     setup2 = async () => {
-    	          video.loadPixels();
+    	  video.loadPixels();
           console.log(video.canvas);
           const image64 = video.canvas.toDataURL();
-          const data = { image64 };
-          const options = {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(data)
-          };
           const response = await axios.post('http://localhost:5000/verify', {'image64':image64});
           console.log(response.data.message);
           if(response.data.message){
@@ -54,6 +46,12 @@ export class Verify extends Component {
 		audio.play(); 
 	}
 
+	trainHandler = async () => {
+		const response = await axios.post('http://localhost:5000/train')
+		console.log(response.data)
+  }
+
+
     
 
 	render(){
@@ -65,6 +63,7 @@ export class Verify extends Component {
 
 		let signup = (
 				<div>
+					
 					<div className="limiter">
 						<div className="container-login100">
 							<div className="wrap-login100 p-l-110 p-r-110 p-t-62 p-b-33">
@@ -91,11 +90,6 @@ export class Verify extends Component {
 										<button id="submit" onClick={this.setup2} className="login100-form-btn">
 											Capture
 										</button>
-									</div>
-									<div className="container-login100-form-btn m-t-17">
-										<Link to="/register" className="login100-form-btn">
-											Register
-										</Link>
 									</div>						
 							</div>
 						</div>
@@ -105,6 +99,15 @@ export class Verify extends Component {
 		)
 
     	return (<div >
+					<nav class="navbar navbar-expand-lg navbar-light bg-white py-3 shadow-sm">
+						<div id="navbarContent" class="collapse navbar-collapse">
+							<ul class="navbar-nav mx-auto">
+								<li class="nav-item"><a href="/" class="nav-link font-weight-bold text-uppercase">CAPTURE</a></li>
+								<li class="nav-item"><a href="/logs" class="nav-link font-weight-bold text-uppercase">LOGS</a></li>
+								<li class="nav-item"><a href="/database" class="nav-link font-weight-bold text-uppercase">DATABASE</a></li>
+							</ul>
+						</div>
+					</nav>
     		{ signup }
     		</div>
 		)

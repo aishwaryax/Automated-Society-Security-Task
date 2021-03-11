@@ -52,6 +52,15 @@ export class Signup extends Component {
 
 		let signup = (
 				<div>
+					<nav class="navbar navbar-expand-lg navbar-light bg-white py-3 shadow-sm">
+						<div id="navbarContent" class="collapse navbar-collapse">
+							<ul class="navbar-nav mx-auto">
+								<li class="nav-item"><a href="/" class="nav-link font-weight-bold text-uppercase">CAPTURE</a></li>
+								<li class="nav-item"><a href="/logs" class="nav-link font-weight-bold text-uppercase">LOGS</a></li>
+								<li class="nav-item"><a href="/database" class="nav-link font-weight-bold text-uppercase">DATABASE</a></li>
+							</ul>
+						</div>
+					</nav>
 					<div className="limiter">
 						<div className="container-login100">
 							<div className="wrap-login100 p-l-110 p-r-110 p-t-62 p-b-33">
