@@ -153,6 +153,8 @@ def recognize():
         writer = csv.DictWriter(csvfile, fieldnames = field_names) 
         writer.writeheader() 
         writer.writerows(data)
+    if(float(temperature) > 37):
+        return json.dumps({"temperature": "temperature high"})
     return json.dumps({"message": "person added into logs"})
 
 

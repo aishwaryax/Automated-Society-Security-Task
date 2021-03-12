@@ -6,6 +6,7 @@ import Sketch from "react-p5"
 import { Link, Redirect } from 'react-router-dom';
 import error from './error.mp3'
 import msg from './msg.mp3'
+import temp from './temp.mp3'
 
 const axios = require('axios');
 let video;
@@ -39,6 +40,9 @@ export class Verify extends Component {
 		  else if (response.data.error) {
 			  this.beep(error)
 		  }
+		  else if (response.data.temperature) {
+            this.beep(temp)
+        }
 	}
 	
 	beep = (sound) => {
