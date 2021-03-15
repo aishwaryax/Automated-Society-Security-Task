@@ -46,15 +46,6 @@ export default class Logs extends Component {
 
         return (
             <>
-            <nav class="navbar navbar-expand-lg navbar-light bg-white py-3 shadow-sm">
-                <div id="navbarContent" class="collapse navbar-collapse">
-                    <ul class="navbar-nav mx-auto">
-                        <li class="nav-item"><a href="/" class="nav-link font-weight-bold text-uppercase">CAPTURE</a></li>
-                        <li class="nav-item"><a href="/logs" class="nav-link font-weight-bold text-uppercase">LOGS</a></li>
-                        <li class="nav-item"><a href="/database" class="nav-link font-weight-bold text-uppercase">DATABASE</a></li>
-                    </ul>
-                </div>
-            </nav>
             <div class="container py-5">
                 <div class="row">
                     <div class="col-lg-11 mx-auto">
@@ -65,7 +56,7 @@ export default class Logs extends Component {
                                     <img style={{width: "420px", height: "250px"}} src={record.image} alt="" class="w-100 card-img-top" />
                                     <figcaption class="p-4 card-img-bottom">
                                     <h2 class="h5 font-weight-bold mb-2 font-italic">{record.name}</h2>
-                                    <p class="mb-0 text-small text-muted font-italic">Phone Number</p>
+                                    <p class="mb-0 text-small text-muted font-italic">{record.phone}</p>
                                     </figcaption>
                                 </figure>
                             </div>
